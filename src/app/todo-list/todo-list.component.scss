@@ -1,0 +1,17 @@
+label {
+  display: block;
+  margin-top: 1rem;
+
+}
+
+input {
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+::ng-deep p-button.rounded button {
+  border-radius: 50% !important;
+  width: 30px !important;
+  height: 30px !important;
+}

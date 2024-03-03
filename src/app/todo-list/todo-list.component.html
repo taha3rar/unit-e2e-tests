@@ -1,0 +1,20 @@
+<h2 data-testid="list-name">{{listName}}</h2>
+<p-button data-testid="list-edit-dialog-button" (onClick)="openDialog()" label="Edit Name" icon="pi pi-edit"></p-button>
+<label for="todo-input">Todo Item</label>
+<input (keyup.Enter)="addItem()" [formControl]="todoControl" data-testid="todo-input" id="todo-input" type="text"
+    pInputText />
+<p-button data-testid="add-item-button" label="Add item" (onClick)="addItem()"></p-button>
+
+<ul *ngIf="items.length">
+    <li *ngFor="let item of items; let i=index" [attr.data-testid]="'todo-item-'+ i ">{{ item }}
+        <p-button (onClick)="removeItem(i)" class="rounded" severity="danger" [attr.data-testid]="'remove-item-'+ i "
+            icon="pi pi-trash"></p-button>
+    </li>
+</ul>
+
+<h2 *ngIf="!items.length">There are currently no todo items</h2>
+
+<p-toast></p-toast>
+
+<app-edit-list-name (emptyName)="showEmptyInputError()" [(listName)]="listName"
+    [(showDialog)]="showDialog"></app-edit-list-name>
